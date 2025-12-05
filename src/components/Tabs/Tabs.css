@@ -1,0 +1,32 @@
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  width: 100%;
+}
+
+.tabs--pill {
+  gap: 8px;
+}
+
+.tabs--underline {
+  gap: 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    /* Hide scrollbar while keeping functionality */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+}

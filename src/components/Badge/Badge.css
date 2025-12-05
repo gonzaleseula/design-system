@@ -1,0 +1,48 @@
+/* Badge Component - Design System */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Mobile: True (≤ 768px) - Default */
+  padding: 2px 4px;
+  border-radius: 8px;
+  min-width: 46px;
+  min-height: 22px;
+  /* Typography */
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  /* Behavior */
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Mobile: Off (> 768px) - Desktop */
+@media (min-width: 769px) {
+  .badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    min-width: 54px;
+    min-height: 26px;
+  }
+}
+
+/* Neutral Variant */
+.badge--neutral {
+  background-color: var(--SurfaceHigh, #f1f1f7);
+  color: var(--OnNeutral, #1b2134);
+}
+
+/* Positive Variant */
+.badge--positive {
+  background-color: var(--SurfacePositive, #b1ffc7);
+  color: var(--OnNeutral, #1b2134);
+}
+
+/* Negative Variant */
+.badge--negative {
+  background-color: var(--SurfaceNegative, #ffbfb1);
+  color: var(--OnNeutral, #1b2134);
+}

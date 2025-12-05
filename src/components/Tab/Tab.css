@@ -1,0 +1,238 @@
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #3d3d3d;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  border-radius: 0;
+  outline: none;
+
+  &:hover:not(.tab--disabled) {
+    color: #1a1a1a;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    color: #a0a0a0;
+  }
+
+  &__label {
+    display: inline;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+  }
+}
+
+/* Pill variant */
+.tab--pill {
+  /* base pill appearance (non-selected) */
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  color: #3d3d3d;
+  gap: 8px;
+
+  &:hover:not(.tab--disabled) {
+    background-color: #e8e8e8;
+    color: #1a1a1a;
+  }
+
+  /* Selected state - Desktop (Mobile: Off) should follow Figma specs */
+  &.tab--selected {
+    /* default selected styling kept for small/unknown viewports */
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+
+  /* Figma: Mobile: Off (desktop) selected pill exact measurements */
+  @media (min-width: 769px) {
+    /* Non-selected (Selected: False) - Desktop: Default / Hover / Active / Focus per designer */
+    &:not(.tab--selected) {
+      min-width: 70px;
+      min-height: 50px;
+      padding: 0 16px; /* top/bottom 0, left/right S=16px */
+      border-radius: 100px;
+      gap: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid var(--Outline, #D3D3DC);
+      box-sizing: border-box;
+
+      /* typography for tab label */
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    &:not(.tab--selected):hover {
+      padding: 0 16px;
+      gap: 8px;
+      background: var(--SurfaceHover, #F6F6FA);
+      border: 1px solid var(--OutlineHover, #C4C5CF);
+      color: var(--OnNeutral, #1B2134);
+    }
+
+    &:not(.tab--selected):active {
+      padding: 0 16px;
+      gap: 8px;
+      background: var(--SurfaceActive, #F1F1F7);
+    }
+
+    &:not(.tab--selected):focus-visible {
+      /* Focus expands slightly per spec */
+      min-width: 74px;
+      min-height: 54px;
+      padding: 0;
+      gap: 0;
+      border: 2px solid #000000;
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    &.tab--selected {
+      min-width: 70px; /* specified */
+      min-height: 50px; /* specified */
+      padding: 2px 16px; /* top/bottom 4XS=2px, left/right S=16px */
+      border-radius: 100px; /* specified */
+      background-color: var(--Inverse, #1B2134);
+      color: var(--OnInverse, #FFFFFF);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+
+      /* typography for selected tab label (Body M) */
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    /* Hover (Selected, Desktop) - per designer: left/right S, top/bottom 0, gap 8 */
+    &.tab--selected:hover {
+      padding: 0 16px; /* top/bottom 0, left/right S=16px */
+      gap: 8px;
+      background-color: var(--InverseHover, #343A4E);
+      color: var(--OnInverse, #FFFFFF);
+    }
+
+    /* Ensure badge spacing for selected pill: 8px between label and badge */
+    &.tab--selected .tab__badge {
+      margin-left: 8px;
+    }
+
+    /* Active (Selected, Desktop) - Figma: background var(--InverseActive, #585D71), padding 0 S 0 S, gap 8 */
+    &.tab--selected:active {
+      padding: 0 16px; /* left/right S=16px */
+      gap: 8px;
+      background-color: var(--InverseActive, #585D71);
+      color: var(--OnInverse, #FFFFFF);
+    }
+
+    /* Focus (Selected, Desktop) - Figma: background var(--Inverse) and 2px solid border using --Inverse */
+    &.tab--selected:focus-visible {
+      background-color: var(--Inverse, #1B2134);
+      /* use OnInverse for the inner 2px stroke so it contrasts with the dark background */
+      padding: 2px 16px; /* top/bottom 4XS=2px, left/right S=16px */
+      box-sizing: border-box;
+      outline: none;
+      /* outer visible focus ring to match Figma/photo and improve accessibility */
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.12);
+    }
+
+    /* ensure when focused the badge doesn't keep extra left margin if gap becomes 0 */
+    &.tab--selected:focus-visible .tab__badge,
+    &:not(.tab--selected):focus-visible .tab__badge {
+      margin-left: 0;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+  }
+}
+
+/* Underline variant */
+.tab--underline {
+  border-bottom: 2px solid transparent;
+  color: #3d3d3d;
+  padding-bottom: 6px;
+  padding-left: 0;
+  padding-right: 0;
+
+  &:hover:not(.tab--disabled) {
+    color: #1a1a1a;
+    border-bottom-color: #d0d0d0;
+  }
+
+  &.tab--selected {
+    color: #1a1a1a;
+    border-bottom-color: #1a1a1a;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+  }
+
+  /* Desktop: allow non-selected underline tabs to flex naturally with padding */
+  @media (min-width: 769px) {
+    padding-left: 16px;
+    padding-right: 16px;
+
+    /* Non-selected (Selected: False) - Desktop: flexible sizing */
+    &:not(.tab--selected) {
+      padding-left: 16px;
+      padding-right: 16px;
+      /* allow natural width from content */
+    }
+  }
+
+  /* Desktop: Underline variant selected-true states */
+  @media (min-width: 769px) {
+    &.tab--selected,
+    &.tab--selected:hover,
+    &.tab--selected:active,
+    &.tab--selected:focus-visible {
+      height: 50px;
+      padding: 0;
+      gap: 0;
+      border-bottom: 2px solid var(--OnNeutral, #1B2134);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--OnNeutral, #1B2134);
+      outline: none;
+    }
+
+    /* Add spacing between label and badge for underline selected tabs */
+    &.tab--selected .tab__badge {
+      margin-left: 8px;
+    }
+  }
+}
