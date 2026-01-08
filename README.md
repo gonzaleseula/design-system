@@ -1,4 +1,4 @@
-# Frontend Interview - Design System
+# Design System
 
 
 ## Install and run
@@ -18,7 +18,7 @@ pnpm storybook
 ## Figma file
 
 
-The figma file of the home test is available [here](https://www.figma.com/design/OclakAGLSXDoMKLFvwLNMP/%F0%9F%92%BB-Design-System-Home-Test---Tabs-Component?node-id=0-1&t=4pG7NN6HKxgxroDz-1).
+[here](https://www.figma.com/design/OclakAGLSXDoMKLFvwLNMP/%F0%9F%92%BB-Design-System-Home-Test---Tabs-Component?node-id=0-1&t=4pG7NN6HKxgxroDz-1).
 
 ---
 
